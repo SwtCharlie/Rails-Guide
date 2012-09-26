@@ -25,10 +25,10 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
+   
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
+      format.html  # new.html.erb
+      format.json  { render :json => @post }
     end
   end
 
@@ -79,23 +79,5 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
-  end
-  
-  def test_redirect
-    @post = Post.first
-    redirect_to @post, :notice => 'blah'
-  end
-
-  def test_redirect2
-    @post = Post.first
-    flash[:notice] = "blah"
-    redirect_to @post
-  end
-
-# wont show until you refresh the page again
-  def test_render
-    @post = Post.first
-    flash[:notice] = "test render notice"
-    render :action => "show", :id => @post
   end
 end
